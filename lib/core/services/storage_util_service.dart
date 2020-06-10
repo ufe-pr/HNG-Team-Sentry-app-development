@@ -51,12 +51,12 @@ class StorageUtil {
   }
 
 //set List
-static List getStringList(String key,) {
+static List<String> getStringList(String key,) {
     if (_preferences == null) return [];
     return _preferences.getStringList(key) ?? [];
   }
   //get List
-  static Future putStringList(String key, List value) {
+  static Future putStringList(String key, List<String> value) {
     if (_preferences == null) return null;
     return _preferences.setStringList(key, value);
   }
