@@ -21,19 +21,17 @@ class Api {
   // Gets the recipe matching the "recipeId" provided
   Future<Recipe> getRecipe(int recipeId) async {
     // Add logic here
-    dynamic recipe = _loadJson();
-    return Recipe.fromJson(jsonDecode(recipe));
+    dynamic response = _loadJson();
+    var recipe = response(recipeId == recipeId);
+    return recipe;
   }
 
   // Gets all recipes
   Future<List<Recipe>> getAllRecipes({int page: 1, int numPerPage: 10}) async{
     // Add logic here
-    var recipes = List<Recipe>();
     dynamic response = _loadJson();
-    var allRecipe = jsonDecode(response) as List<dynamic>;
-    for (var recipe in allRecipe) {
-      recipe.add(Recipe.fromJson(recipe));
-    }
+    var recipes = response.map((elem) => Recipe.fromMap(elem)).toList();
+
 
     return recipes;
   }
