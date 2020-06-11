@@ -1,10 +1,13 @@
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class StorageUtil {
   static StorageUtil _storageUtil;
   static SharedPreferences _preferences;
 
-  static Future getInstance() async {
+  @factoryMethod
+  static Future<StorageUtil> getInstance() async {
     if (_storageUtil == null) {
 
       // keep local instance till it is fully initialized.
